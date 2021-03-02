@@ -18,3 +18,7 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 ======================================================== -->
+
+
+{{-- include libary --}}
+<link rel="stylesheet" href="{{ asset('lib/fontawesome/css/all.css') }}">

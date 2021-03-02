@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -35,5 +37,25 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function Login(Request $request)
+    {
+        return view('front_end.user.login');
+    }
+
+    public function loginPost(Request $request)
+    {
+        $user = [
+            'email' => $request->get('email'),
+            'password' => $request->get('password')
+        ];
+        if (Auth::attempt($user)) {
+            return redirect('/');
+        } else {
+            echo 1;
+            die;
+            return redirect()->route('user.login.get')->with('error-login', "Sai email hoặc mật khẩu !");
+        }
     }
 }

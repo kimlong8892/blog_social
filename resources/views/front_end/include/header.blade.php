@@ -21,7 +21,7 @@
         <div class="container d-flex">
 
             <div class="logo mr-auto">
-                <h1 class="text-light"><a href="index.html"><span>Eterna</span></a></h1>
+                <h1 class="text-light"><a href="{{ url('/') }}"><span>Eterna</span></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
@@ -34,7 +34,6 @@
                         <ul>
                             <li><a href="about.html">About Us</a></li>
                             <li><a href="team.html">Team</a></li>
-
                             <li class="drop-down"><a href="#">Drop Down 2</a>
                                 <ul>
                                     <li><a href="#">Deep Drop Down 1</a></li>
@@ -52,6 +51,20 @@
                     <li><a href="pricing.html">Pricing</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    @if(Auth::check())
+                        <li class="drop-down">
+                            <a href="contact.html">
+                                <i class="fa fa-user"></i>
+                                <span style="color: green;">{{ Auth::user()->name }}</span>
+                            </a>
+                            <ul>
+                                <li><a href="{{ route('user.profile') }}">Trang cá nhân</a></li>
+                                <li><a href="{{ route('user.logout') }}">Đăng xuất</a></li>
+                            </ul>
+                        </li>
+                    @else
+                        <li><a href="{{ route('user.login.get') }}">Đăng nhập</a></li>
+                    @endif
 
                 </ul>
             </nav><!-- .nav-menu -->

@@ -12,3 +12,13 @@
 */
 
 Route::get('/', [App\Http\Controllers\front_end\HomeController::class, 'Index']);
+
+Route::prefix('user')->group(function () {
+    Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'Login'])->name('user.login.get');
+    Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'loginPost'])->name('user.login.post');
+    Route::get('/profile', [App\Http\Controllers\front_end\UserController::class, 'showProfile'])->name('user.profile')->middleware('auth');
+    Route::get('/logout', function (){
+        Auth::logout();
+        return back();
+    })->name('user.logout');
+});
