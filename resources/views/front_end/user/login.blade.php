@@ -1,7 +1,7 @@
 @extends('front_end.master')
 
 @section('main')
-    <form class="form-signin" autocomplete="off" method="POST" action="{{ route('user.login.post') }}">
+    <form class="form-signin mt-3 mb-3" autocomplete="off" method="POST" action="{{ route('user.login.post') }}">
         @csrf
         <h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
         <label for="inputEmail" class="sr-only">Địa chỉ email</label>
