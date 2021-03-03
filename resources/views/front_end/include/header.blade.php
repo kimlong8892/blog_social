@@ -64,6 +64,7 @@
                         </li>
                     @else
                         <li><a href="{{ route('user.login.get') }}">Đăng nhập</a></li>
+                        <li><a href="{{ route('user.reg.get') }}">Đăng ký</a></li>
                     @endif
 
                 </ul>

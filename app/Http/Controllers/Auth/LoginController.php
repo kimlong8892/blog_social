@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+/**
+ * Class LoginController
+ * @package App\Http\Controllers\Auth
+ */
 class LoginController extends Controller
 {
     /*
@@ -39,11 +43,19 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function Login(Request $request)
     {
         return view('front_end.user.login');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function loginPost(Request $request)
     {
         $user = [
@@ -53,8 +65,6 @@ class LoginController extends Controller
         if (Auth::attempt($user)) {
             return redirect('/');
         } else {
-            echo 1;
-            die;
             return redirect()->route('user.login.get')->with('error-login', "Sai email hoặc mật khẩu !");
         }
     }
