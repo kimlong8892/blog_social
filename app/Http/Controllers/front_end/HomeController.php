@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
     public function Index(Request $request){
-        return view('front_end.home');
+        $listPost = \App\Post::paginate(12);
+
+        return view('front_end.home', compact('listPost'));
     }
 }

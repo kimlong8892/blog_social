@@ -13,6 +13,11 @@
     <div class="container">
         @yield('main')
     </div>
+    <section id="blog" class="blog">
+        <div class="container">
+            @yield('blog')
+        </div>
+    </section>
     @include('front_end.include.footer')
     @include('front_end.include.include_js_for_master')
 </body>

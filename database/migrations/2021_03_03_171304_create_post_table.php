@@ -20,6 +20,7 @@ class CreatePostTable extends Migration
             $table->text('tag');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->string('thumbnail');
             $table->timestamps();
         });
     }
